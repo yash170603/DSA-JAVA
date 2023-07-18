@@ -25,7 +25,7 @@
      {
          this.data = data;
          this.next = next;
-         this.prev = next;
+         this.prev = next;   
      }
  };
 
