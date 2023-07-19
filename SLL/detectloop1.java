@@ -18,6 +18,6 @@ public class Solution {
         }
 
         return true;
-       
+                     //This works for even number of nodes,in my dry run but works fine on compiler, please checks it.
     }
 }
