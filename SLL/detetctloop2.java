@@ -7,7 +7,7 @@
  *         val = x;
  *         next = null;
  *     }
- * }
+ * }                                       // This works as same for DLL.
  */
 public class Solution {
     public boolean hasCycle(ListNode head) 
@@ -22,7 +22,7 @@ public class Solution {
             slow = slow.next;
             fast = fast.next.next;
             if(slow == fast) return true;
-        }//System.gc();
+        }
         return false;
        
     }
