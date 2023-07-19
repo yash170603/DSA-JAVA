@@ -8,7 +8,7 @@
  *         next = null;
  *     }
  * }                                       // This works as same for DLL.
- */
+   there is something wrong this works correctly but in my dry run it  work for ODD number of nodes please clear it out*/
 public class Solution {
     public boolean hasCycle(ListNode head) 
     {
