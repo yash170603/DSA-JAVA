@@ -44,4 +44,65 @@ class Solution {
         }
         return newHead;
     }
-}*/
+}   Input: 1 -> 2 -> 3 -> 4 -> 5 -> null
+newHead = null
+
+
+
+head = 1 -> 2 -> 3 -> 4 -> 5 -> null
+next = 2 -> 3 -> 4 -> 5 -> null
+head.next = null
+newHead = 1 -> null
+head = 2 -> 3 -> 4 -> 5 -> null
+
+
+
+
+head = 2 -> 3 -> 4 -> 5 -> null
+next = 3 -> 4 -> 5 -> null
+head.next = 1 -> null
+newHead = 2 -> 1 -> null
+head = 3 -> 4 -> 5 -> null
+
+
+
+
+
+
+head = 3 -> 4 -> 5 -> null
+next = 4 -> 5 -> null
+head.next = 2 -> 1 -> null
+newHead = 3 -> 2 -> 1 -> null
+head = 4 -> 5 -> null
+
+
+
+
+
+
+
+head = 4 -> 5 -> null
+next = 5 -> null
+head.next = 3 -> 2 -> 1 -> null
+newHead = 4 -> 3 -> 2 -> 1 -> null
+head = 5 -> null
+
+
+
+
+
+
+head = 5 -> null
+next = null
+head.next = 4 -> 3 -> 2 -> 1 -> null
+newHead = 5 -> 4 -> 3 -> 2 -> 1 -> null
+head = null
+
+
+
+head is null, so the loop exits.
+
+
+newHead = 5 -> 4 -> 3 -> 2 -> 1 -> null
+
+*/
