@@ -49,6 +49,14 @@ public class Solution {
             dummy1=dummy1.next;
         }
         return null;*/
+        /*The intuition behind the approach of finding the intersection point of two linked lists by adjusting their starting positions
+        based on the difference in lengths is to ensure that both lists have the same number of nodes to traverse before reaching the intersection point.
+        The key observation is that if two linked lists intersect at a certain node, all the subsequent nodes will be common in both lists.
+        However, the nodes before the intersection point will differ in both lists. By aligning the starting positions of the two lists,
+        we make sure that both pointers (dummy and dummy1) cover the same distance to reach the intersection point.*/
+
+
+        
         // another solution
 ListNode d1=headA;
 ListNode d2=headB;
