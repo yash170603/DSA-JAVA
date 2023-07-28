@@ -1,0 +1,292 @@
+/*
+    Time Complexity: O(N^2)
+    Space Complexity: O(1)
+
+    Where N is the number of nodes in the doubly linked list.
+*/
+
+public class Solution {
+
+    public static boolean findPair(Node<Integer> head, int k) {
+        Node<Integer> ptr1 = head;
+
+        // Traverse the linked list to the end.
+        while (ptr1 != null) {
+            Node<Integer> ptr2 = ptr1.next;
+            while (ptr2 != null) {
+                if (ptr1.data + ptr2.data == k) {
+                    return true;
+                }
+
+                ptr2 = ptr2.next;
+            }
+
+            ptr1 = ptr1.next;
+        }
+
+        return false;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+    Time Complexity: O(N)
+    Space Complexity: O(N)
+
+    Where N is the number of nodes in the doubly linked list.
+*/
+
+import java.util.HashMap;
+
+public class Solution {
+
+    public static boolean findPair(Node<Integer> head, int k) {
+        Node<Integer> ptr1 = head;
+        HashMap<Integer, Integer> myMap = new HashMap<Integer, Integer>();
+
+        // Traverse the linked list to the end.
+        while (ptr1 != null) {
+            int val = ptr1.data;
+            if (myMap.containsKey(k - val) != false) {
+                return true;
+            }
+
+            myMap.put(val, 1);
+            ptr1 = ptr1.next;
+        }
+
+        return false;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    Time Complexity: O(N)
+    Space Complexity: O(1)
+
+    Where N is the number of nodes in the doubly linked list.
+*/
+
+public class Solution {
+
+    public static boolean findPair(Node<Integer> head, int k) {
+        Node<Integer> start = head;
+        Node<Integer> end = head;
+
+        // Traverse the linked list to the end.
+        while (end.next != null) {
+            end = end.next;
+        }
+
+        while (start != end) {
+            int val = start.data + end.data;
+            if (val == k) {
+                return true;
+            }
+
+            if (val < k) {
+                start = start.next;
+            }
+
+            else {
+                end = end.prev;
+            }
+
+        }
+
+        return false;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.HashSet;
+
+class Node {
+    int data;
+    Node prev;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+    }
+}
+
+class DoublyLinkedList {
+    Node head;
+    Node tail;
+
+    public void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+    }
+
+    public void findPairsWithSum(int sum) {
+        HashSet<Integer> set = new HashSet<>();
+        Node current = head;
+
+        while (current != null) {
+            int target = sum - current.data;
+            if (set.contains(target)) {
+                System.out.println("Pair found: (" + current.data + ", " + target + ")");
+            }
+            set.add(current.data);
+            current = current.next;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        DoublyLinkedList list = new DoublyLinkedList();
+        list.insert(1);
+        list.insert(2);
+        list.insert(3);
+        list.insert(4);
+        list.insert(5);
+
+        int sum = 7;
+        list.findPairsWithSum(sum);
+    }
+}
+\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class Solution {
+
+    public static boolean findPair(Node<Integer> head, int k) {
+        for (Node<Integer> ptr1 = head; ptr1 != null; ptr1 = ptr1.next) {
+            for (Node<Integer> ptr2 = ptr1.next; ptr2 != null; ptr2 = ptr2.next) {
+                if (ptr1.data + ptr2.data == k) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+
+    public static List<Pair<Integer, Integer>> findPair(Node<Integer> head, int k) {
+        List<Pair<Integer, Integer>> pairs = new ArrayList<>();
+
+        for (Node<Integer> ptr1 = head; ptr1 != null; ptr1 = ptr1.next) {
+            for (Node<Integer> ptr2 = ptr1.next; ptr2 != null; ptr2 = ptr2.next) {
+                if (ptr1.data + ptr2.data == k) {
+                    pairs.add(new Pair<>(ptr1.data, ptr2.data));
+                }
+            }
+        }
+
+        return pairs;
+    }
+
+    // Simple Pair class to store the key pairs
+    static class Pair<K, V> {
+        K first;
+        V second;
+
+        Pair(K first, V second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        @Override
+        public String toString() {
+            return "(" + first + ", " + second + ")";
+        }
+    }
+}
