@@ -1,0 +1,110 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+         if (head == null) {
+            return head;
+        }
+        int len = 1;
+        ListNode curr = head;
+        while (curr.next != null) {
+            curr = curr.next;
+            len++;
+        }
+        k = k % len;
+        if (k == 0) {
+            return head;
+        }
+        curr.next = head;
+        ListNode newHead = head;
+        for (int i = 0; i < len - k - 1; i++) {
+            newHead = newHead.next;
+        }  
+        ListNode temp = newHead.next;
+        newHead.next = null;
+        return temp;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RECURSIVE APPROACH 
+class Solution {
+    ListNode firstNodeOfList;
+    int count;
+    public ListNode rotateRight(ListNode head, int k) 
+    {
+        //base condition
+        if(head==null || head.next==null) return head;
+        
+        //declaring required variables
+        int lengthOfTheList=0;
+        firstNodeOfList=head;
+        ListNode temp = head;
+        
+        //finding length of list
+        while(temp!=null) 
+        {
+            temp=temp.next;
+            lengthOfTheList++;
+        }
+
+        //no of operations to perform will be k % size of the list
+        count= k % lengthOfTheList;
+
+        //calling function to perform rotation count times
+        helper(head,head.next);
+
+        //returning the new head of list
+        return firstNodeOfList;
+    }
+
+    public void helper(ListNode currentNode, ListNode nextNode)
+    {
+        //exit condition of recursion
+        if(currentNode.next== null) return;
+        
+        helper(nextNode,nextNode.next);
+        
+        //perform rotation only when count > 0
+        if(count > 0)
+        {
+            nextNode.next=firstNodeOfList;
+            currentNode.next=null;
+            firstNodeOfList=nextNode;
+            count--;
+        }
+        else return;
+    }
+}*/
