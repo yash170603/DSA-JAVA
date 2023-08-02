@@ -33,7 +33,8 @@ In Java, the valid range for an int is from -2,147,483,648 to 2,147,483,647.
 
 
 // recursive approach 
-class Solution {
+
+ class Solution {
     public int myAtoi(String s) {
         s = s.trim();
         if (s.isEmpty()) {
@@ -48,29 +49,22 @@ class Solution {
             index++;
         }
 
-        return recursiveAtoi(s, negative, index);
+        return recursiveAtoi(s, negative, index, 0);
     }
 
-    private int recursiveAtoi(String s, boolean negative, int index) {
+    private int recursiveAtoi(String s, boolean negative, int index, int result) {
         if (index >= s.length() || !Character.isDigit(s.charAt(index))) {
-            return 0; // Base case: if no more digits or non-digit character is encountered, return 0.
+            return negative ? -result : result;
         }
 
         int currentDigit = s.charAt(index) - '0';
 
         // Check for overflow before adding the next digit.
-        if (Integer.MAX_VALUE / 10 < currentDigit) {
+        if (Integer.MAX_VALUE / 10 < result || (Integer.MAX_VALUE / 10 == result && Integer.MAX_VALUE % 10 < currentDigit)) {
             return negative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
         }
 
-        int result = recursiveAtoi(s, negative, index + 1) * 10 + currentDigit;
-
-        // Check for overflow after adding the next digit.
-        if (result < 0) {
-            return negative ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-        }
-
-        return negative ? -result : result;
+        return recursiveAtoi(s, negative, index + 1, result * 10 + currentDigit);
     }
 }
 
@@ -82,4 +76,5 @@ class Solution {
 
 
 
-// recurrsive method
+
+
