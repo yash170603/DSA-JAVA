@@ -18,7 +18,8 @@ class rec2 {
 
 
 
-
+// i am not able to write print statement inside the main class, there is something wrong,
+//     ai is also not helping these times.
 
 
 
