@@ -1,6 +1,6 @@
 import java.util.*;
 
-class rec2 
+class rec2 //functional recursion
 {
 
 public static void main(String args[])
@@ -28,4 +28,45 @@ public static int sum(int n, int i)
 
 
 }
+
+
+//parametric recursion 
+public class rec6 
+{
+    public static void main(String args[])
+    {
+    int sum =0;
+    int n=5;
+    add(n,sum);
+}
+
+public static void add(int n, int sum)
+{
+    if(n<1)
+    {
+        System.out.println(sum);
+        return;
+    }
+    add(n-1, sum+n);
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
