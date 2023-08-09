@@ -1,6 +1,6 @@
 import java.util.*;
 
-class rec2 //functional recursion
+class rec2 // parametric recursion
 {
 
 public static void main(String args[])
@@ -58,7 +58,31 @@ public static void add(int n, int sum)
 
 
 
+// functional recursion
+import java.util.*;
+class rec7 
+{
+    public static void main(String args [])
+    {
+        Scanner sc = new Scanner(System.in);
+        int n =5;
+        int v = sum(n);
+        System.out.println(v);
 
+
+    }
+
+    public static int sum(int n)
+    {
+        if(n<1)
+        return 0;
+
+        return n+ sum(n-1);
+    }
+}
+
+
+//pararmetric takes 2 or more parameters, while functional takes only 1 which is being provided
 
 
 
