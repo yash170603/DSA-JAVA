@@ -1,8 +1,8 @@
 import java.util.*;
 public class reversearrayrecursion 
 {
-
-    public static void main(String args[])
+//Palindrome string can be check by this way to if arr[i] != arr[n-i-1]  return ;
+     public static void main(String args[])
     {
         Scanner sc = new Scanner (System.in);
         int a [] = {1,2,3,4,5};
