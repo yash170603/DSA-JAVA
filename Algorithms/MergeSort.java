@@ -1,5 +1,5 @@
 public class MergeSort {
-
+                                // time complexity = n*log n   space complexity o(n)
     // Main merge sort method
     public static void mergeSort(int[] arr) {
         int n = arr.length;
