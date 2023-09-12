@@ -2,6 +2,7 @@
 class Solution {
 public boolean isPowerOfTwo(int n) {
     return n > 0 && (n & (n - 1)) == 0;
+   // and operator on 4 and 3 ==0, similarly for all 2 to the power n digits
     }
 }
 
