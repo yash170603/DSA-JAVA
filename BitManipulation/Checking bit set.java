@@ -5,7 +5,7 @@ public class Solution {
                boolean f = false;
                int x = 1<<(k-1);
             
-               if((n|x)63 ==n)
+               if((n&x) !=0)
                f = true;
 
                return f;
