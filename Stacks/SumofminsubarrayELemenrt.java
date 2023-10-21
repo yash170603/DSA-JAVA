@@ -106,3 +106,34 @@ int sum =0;
         
     }
 }
+/*Define a Pair Class:
+The Pair class is defined to store two integers: currelement and countval. This class is later used to keep track of elements in the stack and their counts.
+
+Create the Solution Class:
+The Solution class contains the main logic for the problem.
+
+Initialize a Modulus Constant:
+The code defines a constant m which is set to (10^9 + 7). This constant will be used for modulus operations in the code.
+
+sumSubarrayMins Method:
+This is the main method that calculates the sum of subarray minimums for the given input array arr.
+
+Create Two Stacks:
+Two Stack<Pair> objects, s1 and s2, are created. These stacks will be used to store pairs of elements and their counts. s1 is for tracking elements to the left of the current element, and s2 is for tracking elements to the right of the current element.
+
+Initialize Left and Right Arrays:
+Two arrays, left and right, are created to store counts of elements less than or equal to the current element on the left and right sides, respectively. These arrays will be used to calculate subarray minimums.
+
+Calculate Left Counts:
+The code iterates through the input array arr from left to right. For each element, it checks the elements in the s1 stack. If the current element is smaller than the element at the top of the stack, it pops elements from the stack, and the count is accumulated. The current element is then pushed onto the stack along with the count. The count is stored in the left array for the current element's index.
+
+Calculate Right Counts:
+Similarly, the code iterates through the input array arr from right to left. It uses the s2 stack to accumulate counts for elements greater than or equal to the current element on the right side. The counts are stored in the right array.
+
+Calculate Sum:
+The code initializes a variable sum to 0. It then iterates through the input array arr one more time and calculates the contribution of each element to the final sum. The contribution is calculated as (arr[k] * left[k] * right[k]) % m, and this value is added to the sum.
+
+Return the Sum:
+The final sum is returned as the result of the sumSubarrayMins method.
+
+The code effectively uses two stacks to keep track of counts of elements smaller than or equal to the current element on both the left and right sides. It then calculates the sum of subarray minimums based on these counts and returns the result. This algorithm is used to efficiently compute the sum of minimum elements in all possible subarrays of the given input array arr.*/
