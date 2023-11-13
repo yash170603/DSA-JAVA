@@ -1,4 +1,4 @@
-// /**
+// /**   same as same trees question
 //  * Definition for a binary tree node.
 //  * public class TreeNode {
 //  *     int val;
@@ -69,6 +69,50 @@ class Solution {
         if (p == null || q == null) {
             return false;
         }
+
+
+
+           //SAME TREES QUESTION
+
+           class Solution {
+     public boolean isSymmetric(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        return isSymmetric1(root.left, root.right);
+    }
+
+
+    public boolean isSymmetric1(TreeNode p, TreeNode q) 
+    {
+
+       
+       if(p == null && q == null)
+       return true;
+       if(p == null || q== null)
+       return false;
+    
+       
+       boolean a = false;
+       boolean b= false;
+      
+
+    //  if(p.left!=null && q.left!=null)
+                 b=  isSymmetric1(p.left,q.right);
+                // if(p.right!=null && q.right !=null)
+              a=  isSymmetric1(p.right,q.left);
+
+       if( a ==false || b ==false)
+         return false; 
+         if(p.val != q.val)
+         return false;
+    
+         return true;
+         
+    }
+}
+                            
 
         return (p.val == q.val) && isMirror(p.left, q.right) && isMirror(p.right, q.left);
     }
