@@ -136,12 +136,12 @@ class Solution {
 
         while (!q.isEmpty()) {    
             int size = q.size();
-            int left = q.peek().nodeheapvalue;// the first element for next level becomes the left bpundary
+            int left = q.peek().nodeheapvalue;// the first element for next level becomes the left bpundary for the level and rigjht gets updated as elelment pops
             int right = 0;
 
             for (int i = 0; i < size; i++) {
                 widNODE temp = q.poll();
-                right = temp.nodeheapvalue; // as the elemenst will be pushed in the same , each time the widht will be calculated and updated as maximum
+                right = temp.nodeheapvalue; // as the elemenst will be poped  in the same level , each time the widht will be calculated and updated as maximum
 
                 if (temp.node.left != null) {
                     q.offer(new widNODE(temp.node.left, 2 * temp.nodeheapvalue));
