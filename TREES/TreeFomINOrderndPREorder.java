@@ -25,7 +25,11 @@ Here's a breakdown of the time complexity:
   - Since each node is visited once, the overall complexity of the `buildTree` function is \( O(n) \).
 
 Therefore, the total time complexity for constructing the binary tree using this algorithm is \( O(n) \), where \( n \) is the number of nodes in the binary tree.*/
- import java.util.HashMap;
+
+refer
+https://lh4.googleusercontent.com/s_Npp9OQGbH1GAPAt95teoSDPyeSRH8rH24G8ySJy29YkvsVQ5S_A_V8aucbqKoVHH6nFUMQ9vCbJAKF0OITaJyDf0Aoz60Fmi3KVJjPnr1_hnXrzQ2IpZVwBs8e1YulAei1dj0T
+
+import java.util.HashMap;
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder)
      {
