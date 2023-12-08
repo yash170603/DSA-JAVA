@@ -13,6 +13,18 @@
  *     }
  * }
  */
+/*The time complexity of constructing a binary tree from its preorder and inorder traversal representations using the provided algorithm is \( O(n) \), where \( n \) is the number of nodes in the binary tree.
+
+Here's a breakdown of the time complexity:
+
+- Building the hashmap (`inMap`) for the inorder traversal takes \( O(n) \) time, where \( n \) is the number of nodes.
+- The recursive `buildTree` function is called for each node of the tree.
+  - At each level of recursion, the function constructs a node, performs a lookup in the hashmap (`inMap`), and calculates the number of nodes in the left subtree.
+  - The total number of nodes processed across all recursive calls is linear, as each node is processed only once.
+  - Within each call of `buildTree`, there's constant time work done for constructing nodes and calculating indices, resulting in \( O(1) \) operations per node.
+  - Since each node is visited once, the overall complexity of the `buildTree` function is \( O(n) \).
+
+Therefore, the total time complexity for constructing the binary tree using this algorithm is \( O(n) \), where \( n \) is the number of nodes in the binary tree.*/
  import java.util.HashMap;
 class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder)
