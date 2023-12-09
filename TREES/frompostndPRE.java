@@ -24,3 +24,43 @@ class Solution {
         return root;
     }
 }
+
+//2nd
+
+import java.util.HashMap;
+
+class Solution {
+    private int postorderIdx;
+
+    private TreeNode buildTreeHelper(int[] inorder, int[] postorder, HashMap<Integer, Integer> map, int left, int right) {
+        if (left > right) return null;
+
+        int rootValue = postorder[postorderIdx];
+        TreeNode root = new TreeNode(rootValue);
+        postorderIdx--;
+
+        int inorderIdx = map.get(rootValue);
+
+        root.right = buildTreeHelper(inorder, postorder, map, inorderIdx + 1, right);
+        root.left = buildTreeHelper(inorder, postorder, map, left, inorderIdx - 1);
+
+        return root;
+    }
+
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0) {
+            return null;
+        }
+
+        postorderIdx = postorder.length - 1;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int len = inorder.length;
+
+        for (int i = 0; i < len; i++) {
+            map.put(inorder[i], i);
+        }
+
+        return buildTreeHelper(inorder, postorder, map, 0, len - 1);
+    }
+}
+
