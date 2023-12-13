@@ -9,7 +9,7 @@ https://drive.google.com/drive/folders/1Lua5WVPnuGrBiquTG0FZ6RV77cNvbdPE
  *     TreeNode(int x) { val = x; }
  * }
  */  
-
+//SAME TYPE HAS BEEN IN TREES.
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
      {
