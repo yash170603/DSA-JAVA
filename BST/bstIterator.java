@@ -1,3 +1,51 @@
+//strivers method of o(h) space is best nd easy 
+import java.util.Stack;
+class BSTIterator
+{
+    TreeNode temp;
+    Stack<TreeNode> s = new Stack<TreeNode>();
+
+    public  BSTIterator(TreeNode root)
+    {
+        this.temp = root;
+        pushall(root);
+
+    }
+
+    public int next()
+    {
+        TreeNode temp = s.pop();
+        int ans = temp.val;
+        if(temp.right != null)
+        pushall(temp.right);
+        return ans;
+
+
+
+    }
+
+    public boolean hasNext()
+    {
+        boolean g = false;
+        if(  s.isEmpty() != true)
+          g = true;
+
+          return g;
+
+    }
+    public void pushall(TreeNode root)
+    {
+        while(root != null)
+        {
+            s.push(root);
+            root = root.left;
+        }
+    }
+
+}
+
+
+//2nd method
 class BSTIterator {
     TreeNode temp;
     Stack<TreeNode> stk = new Stack<>();
@@ -30,7 +78,7 @@ class BSTIterator {
 }
 
 
-//2nd
+//3rd
 
 /**
  * Definition for a binary tree node.
