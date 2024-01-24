@@ -24,7 +24,7 @@ class Solution {
              int money = q.peek().amount;
              q.poll();
 
-             if( stops>K)
+             if( stops>K+1)  //  if k == 2 and dest = d,,, a to b, 1 stop, b to c 2 stops , c to d 3 stops, the kth+1 stop should be dest, therefore k+1
              continue;
 
              for( pair d: adj.get(vertex))
