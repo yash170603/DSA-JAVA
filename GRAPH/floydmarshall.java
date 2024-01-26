@@ -4,7 +4,7 @@
 import java.util.*;
 import java.lang.*;
 import java.io.*;
-class GFG
+class GFG               
 {
     public static void main(String[] args) throws IOException
     {
@@ -76,4 +76,4 @@ class Solution
             }
         }
     }
-}
+} // cycle detection= if diagnol element !=0, cycle exists;
