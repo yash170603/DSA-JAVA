@@ -58,6 +58,12 @@ class Solution
             {
                 for( int k=0;k<n;k++)
                 {
+                      // if any of the mid weight is infinity, then it wont be changed as how can something be greater than infinity??
+                     // there fore add this condition
+
+                    if (matrix[j][i] == 100000||
+                            matrix[i][k] == 100000)
+                        continue;
                     if( matrix[j][k] > matrix[j][i]+matrix[i][k])
                     {
                         matrix[j][k] = matrix[j][i]+matrix[i][k];
