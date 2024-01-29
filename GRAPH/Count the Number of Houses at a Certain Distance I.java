@@ -16,6 +16,8 @@ class Solution {
         for (int via = 1; via <= n; via++) {
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= n; j++) {
+                    if( grid[i][via] == 100000 || grid[via][j] == 100000)
+                    continue;
                     grid[i][j] = Math.min(grid[i][j], grid[i][via] + grid[via][j]);
                 }
             }
