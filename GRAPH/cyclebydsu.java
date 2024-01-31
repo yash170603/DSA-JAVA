@@ -1,7 +1,7 @@
 //{ Driver Code Starts
 import java.util.*;
 import java.lang.*;
-import java.io.*;
+import java.io.*;  // cyclee exists if the parent of any two node is same
 class GFG
 {
     public static void main(String[] args) throws IOException
@@ -69,7 +69,7 @@ class Solution {
             for (int v : adj.get(u)) {
                 if (u < v) {
                     if (find(u) == find(v))
-                        return 1;
+                        return 1;  // all comes under if(u<v)
                     else {
                         union(u, v);
                     }
