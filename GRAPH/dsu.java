@@ -3,6 +3,7 @@ import java.util.Arrays;
 class DSU {
     private int[] parent;
     private int[] rank;
+    // if we had to do this with size comparison, defins=e size array instead of rank
 
     // Constructor to initialize DSU with 'n' elements
     public DSU(int n) {
@@ -37,7 +38,7 @@ class DSU {
 
         // Attach the smaller rank tree under the root of the higher rank tree
         if (rank[xParent] > rank[yParent]) {
-            parent[yParent] = xParent;
+            parent[yParent] = xParent;  
         } else if (rank[xParent] < rank[yParent]) {
             parent[xParent] = yParent;
         } else {
@@ -61,3 +62,24 @@ public class Main {
         System.out.println("Are 1 and 3 in the same set? " + (dsu.find(1) == dsu.find(3)));
     }
 }
+// by size comparison
+public void union(int x, int y) {
+        int xParent = find(x);
+        int yParent = find(y);
+
+        if (xParent == yParent) {
+            return; // Already in the same set
+        }
+
+        // Attach the smaller rank tree under the root of the higher rank tree
+        if (size[xParent] > size[yParent]) {
+            parent[yParent] = xParent;
+            size[xparent] +=size[yparent];  // increase the size of parent block by the size of child block
+              } else if (rank[xParent] < rank[yParent]) {
+            parent[xParent] = yParent;
+            size[yparent] +=size[xparent];
+        } else {
+            parent[yParent] = xParent;
+            size[xparent] +=size[yparent];
+        }
+    }
