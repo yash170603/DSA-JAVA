@@ -20,7 +20,7 @@ class DSU {
     // Find operation with path compression
     public int find(int x) {
         if (parent[x] == x) {
-            return ;
+            return  x ;
         }
         int a  = find(parent[x]);
       parent[x]=a;  // Path compression
@@ -74,12 +74,12 @@ public void union(int x, int y) {
         // Attach the smaller rank tree under the root of the higher rank tree
         if (size[xParent] > size[yParent]) {
             parent[yParent] = xParent;
-            size[xparent] +=size[yparent];  // increase the size of parent block by the size of child block
+            size[xParent] +=size[yParent];  // increase the size of parent block by the size of child block
               } else if (rank[xParent] < rank[yParent]) {
             parent[xParent] = yParent;
-            size[yparent] +=size[xparent];
+            size[yParent] +=size[xParent];
         } else {
             parent[yParent] = xParent;
-            size[xparent] +=size[yparent];
+            size[xParent] +=size[yParent];
         }
     }
