@@ -1,68 +1,40 @@
-class Solution {
-    public int rob(int[] nums)
+class Solution { // rec+ memo
+     public int dp [];
+    public int climbStairs(int n)
      {
-         int t[]= new int [101];
-         t[0]=0;
-         t[1]=nums[0];
-         for( int i =2;i<=nums.length;i++)
-         {
-             int steal = nums[i-1]+t[i-2];
-             int skip = t[i-1];
-             t[i] = Math.max(steal,skip);
-         }
+       dp  = new int [50];
+      Arrays.fill(dp,-1);
 
-         return t[nums.length];
+      return solve(n);
+        
     }
 
+    public int solve( int x)
+    {
+        if( x<0)return 0;
+        if( x == 0) return 1;
+        if( dp[x] != -1)
+        return dp[x];
+        return  dp[x] =solve( x-1)+ solve( x-2);
+
+    }
 }
 
-// 2nd approach
+// bottom upo
 import java.util.Arrays;
 
-class Solution {    //recursion+memoization
-    int[] t = new int[101];
-
-    public int solve(int[] nums, int i, int n) {
-        if (i >= n)
-            return 0;
-
-        if (t[i] != -1)
-            return t[i];
-
-        int take = nums[i] + solve(nums, i + 2, n); // steals ith house and moves to i+2 (because we can't steal adjacent)
-        int skip = solve(nums, i + 1, n); // skips this house, now we can move to adjacent next house
-
-        return t[i] = Math.max(take, skip);
-    }
-
-    public int rob(int[] nums) {
-        int n = nums.length;
-        Arrays.fill(t, -1);
-        return solve(nums, 0, n);
-    }
-}
-
-
-// Approach-3 (Improving approach-2)
-// See that it looks nothing but a fibonacci sequence. You just have to store last 2
-// values (t[i-1] & t[i-2]) to find current value (t[i])
-class Solution3 {
+class Solution {
     public int climbStairs(int n) {
-        if (n == 1 || n == 2 || n == 3)
-            return n;
-
-        int a = 1;
-        int b = 2;
-        int c = 3;
+        if (n <= 2) return n;
+        
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
 
         for (int i = 3; i <= n; i++) {
-            c = a + b;
-
-            int temp_b = b;
-            b = c;
-            a = temp_b;
-
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
-        return c;
+
+        return dp[n];
     }
 }
