@@ -5,7 +5,12 @@ class Solution {
          int cc=1;
          for( int i=1;i<nums.length;i++)
          {
-             if( nums[i]==c)
+               if( cc == 0)
+           {
+               c = nums[i];
+               cc=1;
+           }
+            else if( nums[i]==c)
              { 
                  cc++;
              }      
@@ -14,12 +19,7 @@ class Solution {
                  cc--;
              }
            
-           if( cc == 0)
-           {
-               c = nums[i];
-               cc=1;
-           }
-
+         
          }
                    int veri=0;
          for(int k: nums)
