@@ -46,13 +46,11 @@ if(vis[x] == false)
     vis[x] = true;
 
 q.offer( new node(x,node))
-
+}
 
 // if(vis[x] == true)
 else if(par !=x) 
 return true;
-}
-
 }
 }
 }// end of checks 
