@@ -27,8 +27,12 @@ class Solution{
             {
                 return false;
             }
-        if (dp[currentindex][currentsum]!= -1) {
-            return dp[currentindex][currentsum] == 1;
+          if (dp[currentindex][currentsum]!= -1) {
+             int u= dp[currentindex][currentsum] ;
+             if( u ==  1)
+             return true;
+             
+             return false;
         }
 
         Boolean ignorecurr = solve(currentindex + 1, currentsum, arr);
