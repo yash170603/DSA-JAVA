@@ -1,0 +1,25 @@
+class Solution {
+    public int timeRequiredToBuy(int[] ticks, int k) {
+         
+
+         Queue<Integer> q = new LinkedList<>();
+         for( int i =0;i<ticks.length;i++)
+         {
+            q.offer(i);
+         }
+         int count=0;
+         while( ticks[k] !=0)
+         {
+            int l = q.remove();
+            if( ticks[l]>0)
+            {
+                 ticks[l]= ticks[l]-1;
+                 count++;
+            }
+            q.offer(l);
+            
+         }
+
+         return count;
+    }
+}
