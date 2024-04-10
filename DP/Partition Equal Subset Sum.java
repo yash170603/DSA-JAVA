@@ -38,6 +38,8 @@ class Solution {
 
             return 0;
         }
+         if( currentsum == t)
+            return 1;
 
         if( currentsum> t)
         {
