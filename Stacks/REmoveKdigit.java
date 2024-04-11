@@ -72,3 +72,45 @@ class Solution {
         return sb.toString();
     }
 }
+
+
+
+class Solution {
+    public String removeKdigits(String num, int k) {
+        
+        StringBuilder ans = new StringBuilder();
+
+        int n = num.length();
+
+        ans.append(num.charAt(0));
+        int count = 0;
+
+        for (int i = 1; i < n; i++) {
+            char curr = num.charAt(i);
+            while (count < k && ans.length() > 0 && ans.charAt(ans.length() - 1) > curr) {
+                ans.deleteCharAt(ans.length() - 1);
+                count++;
+            }
+            ans.append(curr);
+        }
+
+        // Handle the case where there are still remaining digits to be removed
+        while (count < k && ans.length() > 0) {
+            ans.deleteCharAt(ans.length() - 1);
+            count++;
+        }
+
+        // Remove leading zeros
+        while (ans.length() > 0 && ans.charAt(0) == '0') {
+            ans.deleteCharAt(0);
+        }
+
+        // If all digits were removed, return "0"
+        if (ans.length() == 0) {
+            return "0";
+        }
+
+        return ans.toString();
+    }
+}
+
