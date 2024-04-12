@@ -87,3 +87,61 @@ class Solution {
         return ans2;
     }
 }
+
+
+
+//without stack
+class Solution {
+    public int trap(int[] height) {
+        
+        if(height.length ==1)
+        return 0;
+        int n= height.length;
+        int left []= new int[n];
+        left[0]=0;
+        int leftprev = height[0];
+        for( int i =1;i<n;i++)
+        {
+            left [i]= leftprev;
+            if( height[i]>leftprev)
+            {
+                leftprev= height[i];
+            }
+        }
+
+        int right []= new int [n];
+        right [n-1]=0;
+        int rightprev = height[n-1];
+        for( int j = n-2;j>=0;j--)
+        {
+            right[j]=rightprev;
+            if(height[j]>rightprev)
+            {
+                rightprev = height [j];
+            }
+        }
+
+        int ans =0;
+
+
+        for( int k =0;k<n;k++)
+        {
+            int curr= height[k];
+            int l= left[k];
+            int r = right[k];
+            int least = Math.min(l,r);
+            if( least - curr>0)
+            {
+                ans+=least-curr;
+            }
+        }
+       
+return ans;
+
+    }
+}
+
+
+
+
+/*This solution for the "Trapping Rain Water" problem calculates the amount of water trapped between bars. It iterates through the heights twice, computing the maximum height to the left and right of each bar. Then, it iterates again, finding the minimum height of adjacent maximums and subtracts the current height. The accumulated positive differences represent the trapped water.*/
