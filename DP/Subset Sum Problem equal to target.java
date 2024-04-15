@@ -1,49 +1,37 @@
-class Solution{
- static int n;
-    static int t;
-    static int[][] dp;
 
-
-    static Boolean isSubsetSum(int N, int arr[], int sum){
-        // code here
-         n = N;
-        t = sum;
-        dp = new int[n][t + 1];
-        for (int[] ass : dp) {
-            Arrays.fill(ass, -1);
-        }
-
-        return solve(0, 0, arr);
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+static Boolean dp[][];
+static int target;
+static int size;
+    public static boolean subsetSumToK(int n, int k, int arr[]){
+        
+          target =k;
+          size=n;
+          dp = new Boolean[n+1][target+1];
+          return solve(0,0,arr);
     }
-    
-     public static Boolean solve(int currentindex, int currentsum, int[] arr) {
-        if (currentindex >= n) {
-            if (currentsum == t)
-                return true;
-
+    public static Boolean solve( int currentindex, int currentsum , int [] arr)
+    {
+        if( currentsum == target)
+        return true;
+        if( currentindex>=size)
+        {
             return false;
         }
-            if(currentsum > t)
-            {
-                return false;
-            }
-          if (dp[currentindex][currentsum]!= -1) {
-             int u= dp[currentindex][currentsum] ;
-             if( u ==  1)
-             return true;
-             
-             return false;
-        }
+        if( currentsum> target)
+        return false;
+        if( dp[currentindex][currentsum] != null)
+        {
+            return dp[currentindex][currentsum];
+        }  // checking before if currentsum+ next arr value is grtrt than targets, may give tle
+        Boolean take = solve( currentindex+1, currentsum+arr[currentindex],arr);
+        Boolean skip = solve( currentindex+1, currentsum,arr);
 
-        Boolean ignorecurr = solve(currentindex + 1, currentsum, arr);
-
-        Boolean tookcurr = solve(currentindex + 1, currentsum + arr[currentindex], arr);
-
-        Boolean ans = tookcurr || ignorecurr;
-
-        dp[currentindex][currentsum] = (ans == true? 1 : 0);
-
-        return ans;
+        return dp[currentindex][currentsum] = take||skip;
+     
+     
     }
 }
 
