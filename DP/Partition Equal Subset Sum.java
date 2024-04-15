@@ -2,6 +2,10 @@
 //which i think makes no sense eg 1,5,11,5 has only one subarray of 11, which is half of 22(sum of all)
 // as two subsets as 11 and 5,5,1 
 //its not always neccessary if we get an subset of sum/2, there will alwyas be only OND subset whose sum si equal to 11????? is it so?? revisit 
+//new update- oopr waili meri baatein galat hai, koi arraya ka tot sum 12 hai , sirf eg, 2 subsets mei baatna hai ki sum equal ho , toh target totsum/2 hi hoga
+
+// best code at last
+
 class Solution {
     int dp [][];
     int t ;
@@ -110,5 +114,53 @@ class Solution {
      if( take == 1 || skip ==1)
      ans=1;
         return dp[currentindex][currentsum] =ans;
+    }
+}
+
+
+
+
+//best code
+
+public class Solution {
+	static int target;
+	static Boolean dp[][];
+	static int size;
+
+	public static boolean canPartition(int[] arr, int n) {
+		
+		  int a=0;
+		  for( int i :arr)
+		  {
+			  a+=i;
+		  }
+		   if (a % 2 != 0) {
+            return false; // If sum is odd, can't partition into equal subsets
+        }
+ 
+		  target =a/2;
+          size=n;
+          dp = new Boolean[n+1][target+1];
+          return solve(0,0,arr);
+	}
+	  public static Boolean solve( int currentindex, int currentsum , int [] arr)
+    {
+        if( currentsum == target)
+        return true;
+        if( currentindex>=size|| currentsum> target )
+        {
+            return false;
+        }
+        
+        if( dp[currentindex][currentsum] != null)
+        {
+            return dp[currentindex][currentsum];
+        }  
+        Boolean take = solve( currentindex+1, currentsum+arr[currentindex],arr);
+        Boolean skip = solve( currentindex+1, currentsum,arr);
+
+        return dp[currentindex][currentsum] = take||skip;
+     
+     
     }
 }
