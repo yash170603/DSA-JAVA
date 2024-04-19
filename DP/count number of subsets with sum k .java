@@ -57,6 +57,7 @@ public class Solution {
     public static int findWays(int num[], int tar) {
         
        // ans=0;
+       Arrays.sort( num);  // impotant
         target = tar;
         n = num.length;
         dp = new int[n+1][target+1];
@@ -70,9 +71,16 @@ public class Solution {
 
     public static int solve( int currentindex, int currentsum, int [] arr)
     {
+           if(currentindex<n)
+        {
+           if(currentsum == target && arr[currentindex] ==0 )
+            return 2;
+                //    if ((currentSum == target && arr[currentIndex] == 0) ||(currentSum == target && arr[currentIndex] == target) )
+                // this second condiiton doesnt work ,idk why
+        }  // special case when arr[i] can be zeroo
+         
         if( currentsum == target)
         {
-            
             return 1 ;
         }
 
@@ -81,15 +89,8 @@ public class Solution {
         if( dp[currentindex][currentsum] !=-1)
         {
             return dp[currentindex][currentsum];
-
-            
+     
         }
-
-    //     int take=0;
-    //    if( currentsum+arr[currentindex]<=target)
-    //    {
-    //        take=   solve(currentindex+1, currentsum+arr[currentindex],arr);
-    //    }  , this was removed for         if(currentindex>=n || currentsum>target),, the 2nd cond.
           int   take=   solve(currentindex+1, currentsum+arr[currentindex],arr)%mod;
           int skip= solve(currentindex+1,currentsum,arr)%mod;
 
