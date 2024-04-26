@@ -146,9 +146,9 @@ public class Solution {
 	  public static Boolean solve( int currentindex, int currentsum , int [] arr)
     {
         if( currentsum == target)
-        return true;
+        return true; //  can do oopr neeche
         if( currentindex>=size|| currentsum> target )
-        {
+        {    // can do oopr neeche
             return false;
         }
         
