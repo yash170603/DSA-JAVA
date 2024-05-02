@@ -1,0 +1,26 @@
+class Solution {
+    public String reversePrefix(String s, char ch)
+     {
+        StringBuilder prev= new StringBuilder();
+       
+
+
+        for( int i =0;i<s.length();i++)
+        {
+             if( s.charAt(i) == ch)
+             {
+                prev.append(s.charAt(i));
+                prev.reverse();
+                prev.append(s.substring(i+1,s.length()));
+                return prev.toString();
+             }
+
+             else
+             {
+                prev.append(s.charAt(i));
+             }
+        }
+
+        return s;
+    }
+}
