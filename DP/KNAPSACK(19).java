@@ -36,16 +36,6 @@ public class Solution {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 // my code only passed 1 case
 
 import java.util.* ;
@@ -103,4 +93,57 @@ public class Solution{
     }
 
     
+}
+
+
+
+
+
+//unbounded
+
+
+class Solution{
+    static int target;
+    static int dp[][];
+    static int n;
+    static int knapSack(int N, int W, int val[], int wt[])
+    {
+         target=  W;
+          int totsum =0;
+          for( int x: wt)
+          {
+              totsum +=x;
+          }
+          n=N;
+          dp = new int [n+1][target+1];
+          for( int arr[]:dp)
+          {
+              Arrays.fill(arr,-1);
+          }
+
+          return solve( 0,0,0,wt,val);
+    }
+    
+     public static int solve( int currentindex, int currentprice, int currentweight, int [] wt, int [] val)
+    {
+       
+         if( currentindex>=n)
+            {
+                return 0;
+            }       
+      
+            if( dp[currentindex][currentweight] != -1)
+            {
+                return dp[currentindex][currentweight];
+            }
+            int take =0;
+            if( currentweight+ wt[currentindex]<=target)
+            {
+  take =val[currentindex]+ solve( currentindex, currentprice+val[currentindex], currentweight+ wt[currentindex], wt, val);
+            }
+           
+            int skip = solve(currentindex+1, currentprice, currentweight, wt, val);
+
+            return dp[currentindex][currentweight]= Math.max( take, skip);
+    }
 }
