@@ -116,3 +116,50 @@ class Solution {
         return dp[index1][index2] = ans;
     }
 }
+
+
+
+
+
+//bottom up
+
+class Solution {
+    int dp[][];
+    int n;
+    int m;
+
+    public int minDistance(String w1, String w2) {
+        
+        n = w1.length();
+        m = w2.length();
+        dp = new int [n+1][m+1];
+        
+
+        for( int i=0;i<=n;i++)
+        {
+            dp[i][0]=i;
+        }
+
+        for(int j =0;j<=m;j++)
+        {
+            dp[0][j] =j;
+        }
+
+        for( int k=1;k<=n;k++)
+        {
+            for( int l=1;l<=m;l++)
+            {
+                if(w1.charAt(k-1) == w2.charAt(l-1))
+                {
+                    dp[k][l]= dp[k-1][l-1];
+                }
+                else
+                {
+                    dp[k][l]= 1+Math.min(dp[k-1][l-1],Math.min(dp[k-1][l],dp[k][l-1]));
+                }
+            }
+        }
+    return dp[n][m];
+
+    }
+}
