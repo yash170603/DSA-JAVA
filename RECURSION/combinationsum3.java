@@ -1,24 +1,36 @@
 class Solution {
-    public List<List<Integer>> combinationSum3(int k, int n) {
-        int [] arr=new int[]{1,2,3,4,5,6,7,8,9};
-        List<List<Integer>> ans=new ArrayList<>();
-        List<Integer> ds=new ArrayList<>();
-        func(0,k,n,ds,arr,ans);
-        return ans;
+    int n ;
+    public List<List<Integer>> combinationSum3(int k, int nn) {
+        List<Integer> a= new ArrayList<>();
+        List<List<Integer>> b= new ArrayList<>();
+        n=nn;
+        solve(1,0,a,b,k);
+        return b;
     }
 
-    public void func(int idx,int len,int target,List<Integer> ds,
-                     int [] arr,List<List<Integer>> ans)
+    public void solve( int index, int sum, List<Integer> a, List<List<Integer>> b,int k)
     {
-        if(idx==arr.length){
-            if(ds.size()==len && target==0) ans.add(new ArrayList<>(ds));
-            return;
+        
+        if( a.size() >= k)
+        {
+              if(sum == n)
+              {
+                b.add(new ArrayList<>(a));
+                return;
+              }
+
+              return;
         }
-        ds.add(arr[idx]);
-        func(idx+1,len,target-arr[idx],ds,arr,ans);
-        ds.remove(ds.size()-1);
-        func(idx+1,len,target,ds,arr,ans);
+
+        for( int i = index;i<=9;i++)
+        {
+            sum+=i;
+            a.add(i);
+            solve( i+1, sum,a,b,k);
+            sum= sum-i;
+            a.remove(a.size()-1);
+        }
+
+        return;
     }
-
-
 }
