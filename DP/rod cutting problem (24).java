@@ -49,23 +49,31 @@ class Solution {
 // bottom up
 class Solution {
     public int cutRod(int[] price, int n) {
-        int[] dp = new int[n + 1];
-        
-        // Initialize the dp array
-        for (int i = 0; i <= n; i++) {
-            dp[i] = 0;
+        int[] length = new int[n];
+        for (int i = 0; i < n; i++) {
+            length[i] = i + 1;
         }
-        
+
+        int[][] dp = new int[n + 1][n + 1];
+
+        // Initialize dp array
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = 0;
+            dp[0][i] = 0;
+        }
+
         // Fill the dp array in a bottom-up manner
         for (int i = 1; i <= n; i++) {
-            int maxVal = Integer.MIN_VALUE;
-            for (int j = 0; j < i; j++) {
-                maxVal = Math.max(maxVal, price[j] + dp[i - j - 1]);
+            for (int j = 1; j <= n; j++) {
+                if (length[i - 1] <= j) {
+                    dp[i][j] = Math.max(price[i - 1] + dp[i][j - length[i - 1]], dp[i - 1][j]);
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
             }
-            dp[i] = maxVal;
         }
-        
-        return dp[n];
+
+        return dp[n][n];
     }
 
     public static void main(String[] args) {
