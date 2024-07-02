@@ -40,3 +40,28 @@ class Solution {
 
     }
 }
+
+
+
+//jumps game 2
+class Solution {
+    public int jump(int[] nums) {
+        
+        int r=0,l=0;
+        int n= nums.length;
+        int jumps=0;
+        while( r<n-1)
+        {
+            int max= Integer.MIN_VALUE;
+             for( int i=l;i<=r;i++)
+             {
+                 max=Math.max(max, i+nums[i]);
+             }
+             l=r+1;
+             r=max;
+             jumps++;
+        }
+
+        return jumps;
+    }
+}
