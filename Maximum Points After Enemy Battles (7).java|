@@ -1,0 +1,29 @@
+class Solution {
+    public long maximumPoints(int[] enemyEnergies, int currentEnergy) {
+         long n = enemyEnergies.length;
+         Arrays.sort(enemyEnergies);
+         int idx = 0;
+         int ui = (int) n;
+         long ce = currentEnergy;
+         long points = 0;
+           if (enemyEnergies[0] > currentEnergy)
+            return 0;
+
+         while (ui > idx) {
+             if (ce >= enemyEnergies[idx]) {
+                
+                points+= ce / enemyEnergies[idx] ;
+                ce = (ce % enemyEnergies[idx]);
+    
+             } else if (points > 0 && ce < enemyEnergies[idx]) {
+                ce += enemyEnergies[ui - 1];
+                ui -= 1; // Reduce the range from the right
+             } else {
+                 break; // If we can't gain points, we should break out of the loop
+             }
+         }
+
+         return points;
+    }
+}
+ 
