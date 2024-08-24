@@ -36,8 +36,8 @@ class Solution {
         possibleResults.add(halfToPalindrome(firstHalf, len % 2 == 0));
         possibleResults.add(halfToPalindrome(firstHalf + 1, len % 2 == 0));
         possibleResults.add(halfToPalindrome(firstHalf - 1, len % 2 == 0));
-        possibleResults.add((long) Math.pow(10, len - 1) - 1);  // Edge case like 999...
-        possibleResults.add((long) Math.pow(10, len) + 1);      // Edge case like 100...001
+        possibleResults.add((long) Math.pow(10, len - 1) - 1); // Edge case like 100...001,101  
+        possibleResults.add((long) Math.pow(10, len) + 1);     // Edge case like 999...
 
         long diff = Long.MAX_VALUE;
         long result = 0;
