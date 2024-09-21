@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public List<String> addOperators(String num, int target) {
+        List<String> ans = new ArrayList<>();
+        backtrack(num, target, 0, "", 0, 0, ans);
+        return ans;
+    }
+
+    private void backtrack(String num, int target, int index, String expression, long prevNum, long currValue, List<String> ans) {
+        // If we reach the end of the string
+        if (index == num.length()) {
+            if (currValue == target) {
+                ans.add(expression);
+            }
+            return;
+        }
+
+        for (int i = index; i < num.length(); i++) {
+            // Handle leading zeros
+            if (i > index && num.charAt(index) == '0') break;
+            String currStr = num.substring(index, i + 1);
+            long currNum = Long.parseLong(currStr);
+
+            if (index == 0) {
+                // First number, just take it
+                backtrack(num, target, i + 1, currStr, currNum, currNum, ans);
+            } else {
+                // Add
+                backtrack(num, target, i + 1, expression + "+" + currStr, currNum, currValue + currNum, ans);
+                // Subtract
+                backtrack(num, target, i + 1, expression + "-" + currStr, -currNum, currValue - currNum, ans);
+                // Multiply
+                backtrack(num, target, i + 1, expression + "*" + currStr, prevNum * currNum, currValue - prevNum + (prevNum * currNum), ans);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.addOperators("123", 6)); // Output: ["1*2*3", "1+2+3"]
+        System.out.println(sol.addOperators("232", 8)); // Output: ["2*3+2", "2+3*2"]
+        System.out.println(sol.addOperators("3456237490", 9191)); // Output: []
+    }
+}
