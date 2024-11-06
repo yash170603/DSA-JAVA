@@ -14,7 +14,7 @@ class Solution {
                   }
                  j--;
                }
-               j= (j==-1)?0:j;
+            
                nums[i+1]=nums[maxIndex];
            }
         }
