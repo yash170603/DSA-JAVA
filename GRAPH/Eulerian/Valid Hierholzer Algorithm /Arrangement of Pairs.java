@@ -42,11 +42,11 @@
 //             int thisNode = s.peek();
 //             if (hasNext(map, thisNode)) {
 //                 int nextNode = nextVertex(map, thisNode);
-//                 ans.add(new int[] { thisNode, nextNode });
+//                 ans.add(new int[] { thisNode, nextNode });  this is wrong...
 //                 deleteEdge(map, thisNode, nextNode);
 //                 s.push(nextNode);
 //             } else
-//                 s.pop();
+//                 s.pop();.... wrong
 //         }
       
 //         return ans;
